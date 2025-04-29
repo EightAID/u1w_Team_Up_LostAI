@@ -21,9 +21,6 @@ public class SoundController : MonoBehaviour
     public AudioClip[] bgmClips;
     public AudioClip[] sfxClips;
 
-    [Header("ŒÅ—LƒTƒEƒ“ƒh")]
-    public AudioClip[] KatoClips;
-
     private void Awake()
     {
         if (Instance == null)
@@ -32,7 +29,7 @@ public class SoundController : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // ‚·‚Å‚ÉƒCƒ“ƒXƒ^ƒ“ƒX‚ª‚ ‚éê‡‚Ííœ
+            Destroy(gameObject); // ã™ã§ã«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒã‚ã‚‹å ´åˆã¯å‰Šé™¤
             return;
         }
     }
@@ -48,7 +45,7 @@ public class SoundController : MonoBehaviour
             time += Time.deltaTime;
             bgmSource.volume = Mathf.Lerp(startVolume, 0f, time / 0.5f);
             sfxSource.volume = Mathf.Lerp(startVolume2, 0f, time / 0.5f);
-            await UniTask.Yield(PlayerLoopTiming.Update); // –ˆƒtƒŒ[ƒ€‘Ò‹@
+            await UniTask.Yield(PlayerLoopTiming.Update); // æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å¾…æ©Ÿ
         }
 
         bgmSource.volume = 0f;
@@ -68,11 +65,11 @@ public class SoundController : MonoBehaviour
     }
 
     /// <summary>
-    /// w’è‚µ‚½BGM‚ğÄ¶‚·‚é
+    /// æŒ‡å®šã—ãŸBGMã‚’å†ç”Ÿã™ã‚‹
     /// </summary>
     public void PlayBGM(int index,float duration = 1)
     {
-        Debug.Log("BGMÄ¶");
+        Debug.Log("BGMå†ç”Ÿ");
         if (index < 0 || index >= bgmClips.Length || CardDataController.isCardUses[3]) return;
 
         bgmSource.clip = bgmClips[index];
@@ -81,7 +78,7 @@ public class SoundController : MonoBehaviour
     }
 
     /// <summary>
-    /// Œø‰Ê‰¹‚ğÄ¶‚·‚é
+    /// åŠ¹æœéŸ³ã‚’å†ç”Ÿã™ã‚‹
     /// </summary>
     public void PlaySFX(int index)
     {
